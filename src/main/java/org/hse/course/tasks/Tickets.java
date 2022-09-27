@@ -16,7 +16,6 @@ public class Tickets {
     public static void main(String[] args) {
         var sixDigitsTicketProcessor = TicketsProcessor.getSixDigitsTicketProcessor();
         var fourDigitsTicketProcessor = TicketsProcessor.getFourDigitsTicketProcessor();
-        //todo добавить пример использования ещё одного посетитетеля (см. комментарий в Visitor)
         Visitor<Ticket, Boolean> strategy = Visitor.getEvenVisitorFactory().getInstance();
 
         sixDigitsTicketProcessor.setStrategy(strategy);
@@ -24,18 +23,8 @@ public class Tickets {
 
         sixDigitsTicketProcessor.setStrategy(ticket -> (ticket.getNumber() % 5) == 0);
         sixDigitsTicketProcessor.process();
-//        TicketsProcessor.getEightDigitsTicketProcessor().process();
         fourDigitsTicketProcessor.setStrategy(strategy);
         fourDigitsTicketProcessor.process();
 
-        System
-            .out
-            .println(fourDigitsTicketProcessor.testTicketByNumber(1001));
-        System
-            .out
-            .println(fourDigitsTicketProcessor.testTicketByNumber(1011));
-        System
-            .out
-            .println(fourDigitsTicketProcessor.testTicketByNumber(null));
-    }
+      }
 }
